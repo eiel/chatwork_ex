@@ -1,13 +1,14 @@
-defmodule ChatworkEx.Endpoint.Me do
+
+defmodule ChatworkEx.Endpoint.Contacts do
   @moduledoc """
   Me Endopoint API Intefaces.
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{ Me, RateLimit, Error }
+  alias ChatworkEx.Response.{ Contact, RateLimit, Error }
   alias ChatworkEx.{ Response, UnauthorizedError }
 
-  @path "me"
+  @path "contacts"
   @url Base.base <> @path
 
   def path, do: @path
@@ -29,7 +30,7 @@ defmodule ChatworkEx.Endpoint.Me do
   end
 
   defp to_response!(response) do
-    Base.to_response!(response, %Me{})
+    Base.to_response!(response, [%Contact{}])
   end
 
 end
