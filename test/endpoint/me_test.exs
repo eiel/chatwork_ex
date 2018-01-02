@@ -1,12 +1,14 @@
 defmodule ChatworkEx.Endpoint.MeTest do
   use ExUnit.Case
-  doctest ChatworkEx.Endpoint.Me
 
   import ChatworkEx.Endpoint.Me
+
   alias ChatworkEx.Response
-  alias ChatworkEx.Response.RateLimit
   alias ChatworkEx.Response.Me
+  alias ChatworkEx.Response.RateLimit
   alias ChatworkEx.UnauthorizedError
+
+  doctest ChatworkEx.Endpoint.Me
 
   test "url" do
     assert url() == "https://api.chatwork.com/v2/me"

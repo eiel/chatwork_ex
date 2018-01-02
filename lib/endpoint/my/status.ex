@@ -1,21 +1,20 @@
-
-defmodule ChatworkEx.Endpoint.Me do
+defmodule ChatworkEx.Endpoint.My.Status do
   @moduledoc """
-  Me Endopoint API Intefaces.
+  My Status Endopoint API Intefaces.
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{ Me, RateLimit, Error }
-  alias ChatworkEx.{ Response, UnauthorizedError }
+  alias ChatworkEx.Response.{ MyStatus, RateLimit, Error }
+  alias ChatworkEx.{ Response, HeaderCreator, UnauthorizedError }
 
-  @path "me"
+  @path "my/status"
   @url Base.base <> @path
 
   def path, do: @path
   def url, do: @url
 
   def get!(access_token) do
-    Base.request!(access_token, url)
+    Base.request!(access_token, url())
     |> to_response!
   end
 
@@ -30,7 +29,7 @@ defmodule ChatworkEx.Endpoint.Me do
   end
 
   defp to_response!(response) do
-    Base.to_response!(response, %Me{})
+    Base.to_response!(response, %MyStatus{})
   end
 
 end
