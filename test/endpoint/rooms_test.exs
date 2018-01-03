@@ -3,10 +3,11 @@ defmodule ChatworkEx.Endpoint.RoomsTest do
 
   import ChatworkEx.Endpoint.Rooms
 
+  alias ChatworkEx.Endpoint.Me
   alias ChatworkEx.Response
   alias ChatworkEx.Response.Room
+  alias ChatworkEx.Response.RoomId
   alias ChatworkEx.Response.RateLimit
-  alias ChatworkEx.UnauthorizedError
 
   doctest ChatworkEx.Endpoint.Rooms
 
@@ -27,5 +28,20 @@ defmodule ChatworkEx.Endpoint.RoomsTest do
     %Room {
       room_id: _,
     } = hd(rooms)
+  end
+
+  test "post!" do
+    access_token = System.get_env("CHATWORK_TOKEN")
+    %{ body: me } = Me.get!(access_token)
+    %Response{
+      rate_limit: %RateLimit{
+        limit: _,
+        remaining: _,
+        reset: _,
+      },
+      body: %RoomId{
+        room_id: _,
+      }
+    } = post!(access_token, "test room", me.account_id)
   end
 end

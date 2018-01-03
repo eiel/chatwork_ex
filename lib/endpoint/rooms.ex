@@ -4,7 +4,7 @@ defmodule ChatworkEx.Endpoint.Rooms do
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{ Room, RateLimit, Error }
+  alias ChatworkEx.Response.{ Room, RoomId, RateLimit, Error }
   alias ChatworkEx.{ Response, UnauthorizedError }
 
   @path "rooms"
@@ -29,8 +29,35 @@ defmodule ChatworkEx.Endpoint.Rooms do
     end
   end
 
+  @doc """
+  http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms
+
+  ## options
+
+  * `description`
+  * `icon_preset`
+  * `members_member_ids`
+  * `members_readonly_ids`
+  """
+  @spec post!(bitstring, bitstring, integer, Keyword.t) :: Respons.t(RoomId.t)
+  def post!(access_token, name, members_admin_ids, options \\ []) do
+    options = [
+      { :name, name } |
+      [
+        { :members_admin_ids, members_admin_ids } |
+        options
+      ]
+    ]
+    Base.post!(url, access_token, options)
+    |> to_post_response!
+  end
+
   defp to_response!(response) do
     Base.to_response!(response, [%Room{}])
+  end
+
+  defp to_post_response!(response) do
+    Base.to_response!(response, %RoomId{})
   end
 
 end

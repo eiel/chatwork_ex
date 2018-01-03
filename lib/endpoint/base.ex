@@ -18,6 +18,11 @@ defmodule ChatworkEx.Endpoint.Base do
     HTTPoison.get!(url, headers)
   end
 
+  def post!(url, access_token, body \\ []) do
+    headers = HeaderCreator.headers(access_token)
+    HTTPoison.post!(url, {:form, body}, headers)
+  end
+
   def parse_header({"X-RateLimit-Limit", limit}, rate_limit), do: %{rate_limit | limit: limit}
   def parse_header({"X-RateLimit-Remaining", remaining}, rate_limit), do: %{rate_limit | remaining: remaining}
   def parse_header({"X-RateLimit-Reset", reset}, rate_limit), do: %{ rate_limit | reset: reset }
