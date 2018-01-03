@@ -15,7 +15,7 @@ defmodule ChatworkEx.Endpoint.Contacts do
   def url, do: @url
 
   def get!(access_token) do
-    Base.request!(access_token, url)
+    Base.get!(url, access_token)
     |> to_response!
   end
 

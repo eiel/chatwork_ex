@@ -22,7 +22,7 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
   """
   def get!(access_token, options \\ []) do
     # TODO status is open or done
-    Base.request!(access_token, url() <> "?" <> URI.encode_query(options))
+    Base.get!(url, access_token, options)
     |> to_response!
   end
 

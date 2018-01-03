@@ -9,8 +9,12 @@ defmodule ChatworkEx.Endpoint.Base do
 
   def base, do: @base
 
-  def request!(access_token, url) do
+  def get!(url, access_token, options \\ []) do
     headers = HeaderCreator.headers(access_token)
+    url = case options do
+      [] -> url
+      _ -> url <> "?" <> URI.encode_query(options)
+    end
     HTTPoison.get!(url, headers)
   end
 
