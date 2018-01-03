@@ -20,6 +20,7 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
     Must be either `"opet"` or `"done"`
   * `assigned_by_account`
   """
+  @spec get!(bitstring, Keyword.t) :: Response.t([Task])
   def get!(access_token, options \\ []) do
     # TODO status is open or done
     Base.get!(url, access_token, options)

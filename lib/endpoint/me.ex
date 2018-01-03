@@ -13,6 +13,7 @@ defmodule ChatworkEx.Endpoint.Me do
   def path, do: @path
   def url, do: @url
 
+  @spec get!(bitstring) :: Response.t(Me.t)
   def get!(access_token) do
     Base.get!(url, access_token)
     |> to_response!

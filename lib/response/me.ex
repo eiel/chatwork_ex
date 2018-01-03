@@ -19,4 +19,22 @@ defmodule ChatworkEx.Response.Me do
     :avatar_image_url,
     :login_mail,
   ]
+
+  @type t :: %__MODULE__{
+    account_id: integer,
+    room_id: integer,
+    name: bitstring,
+    chatwork_id: bitstring,
+    organization_id: integer,
+    organization_name: bitstring,
+    department: bitstring,
+    title: bitstring,
+    mail: bitstring,
+    tel_organization: bitstring,
+    skype: bitstring,
+    facebook: bitstring,
+    twitter: bitstring,
+    avatar_image_url: bitstring,
+    login_mail: bitstring,
+  }
 end

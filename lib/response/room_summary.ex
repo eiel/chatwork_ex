@@ -4,4 +4,10 @@ defmodule ChatworkEx.Response.RoomSummary do
     :name,
     :room_id,
   ]
+
+  @type t :: %__MODULE__{
+    icon_path: bitstring,
+    name: bitstring,
+    room_id: integer,
+  }
 end

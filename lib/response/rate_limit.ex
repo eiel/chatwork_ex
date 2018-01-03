@@ -4,4 +4,10 @@ defmodule ChatworkEx.Response.RateLimit do
     :remaining,
     :reset,
   ]
+
+  @type t :: %__MODULE__{
+    limit: integer,
+    remaining: integer,
+    reset: integer,
+  }
 end

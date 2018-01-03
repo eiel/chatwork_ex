@@ -9,4 +9,15 @@ defmodule ChatworkEx.Response.Contact do
     :department,
     :avatar_image_url,
   ]
+
+  @type t :: %__MODULE__{
+    account_id: integer,
+    room_id: integer,
+    name: bitstring,
+    chatwork_id: bitstring,
+    organization_id: integer,
+    organization_name: bitstring,
+    department: bitstring,
+    avatar_image_url: bitstring,
+  }
 end

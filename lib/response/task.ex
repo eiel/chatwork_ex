@@ -6,6 +6,15 @@ defmodule ChatworkEx.Response.Task do
     :message_id,
     :body,
     :limit_time,
-    :status_open,
+    :status,
   ]
+
+  @type t :: %__MODULE__{
+    task_id: integer,
+    room: RoomSummary.t,
+    assigned_by_account: integer,
+    message_id: bitstring,
+    body: bitstring,
+    status: bitstring,
+  }
 end
