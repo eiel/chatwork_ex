@@ -6,8 +6,8 @@ defmodule ChatworkEx.Response.RateLimit do
   ]
 
   @type t :: %__MODULE__{
-    limit: integer,
-    remaining: integer,
-    reset: integer,
+    limit: non_neg_integer,
+    remaining: non_neg_integer,
+    reset: pos_integer,
   }
 end

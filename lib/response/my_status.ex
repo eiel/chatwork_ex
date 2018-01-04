@@ -9,11 +9,11 @@ defmodule ChatworkEx.Response.MyStatus do
   ]
 
   @type t :: %__MODULE__{
-    unread_room_num: integer,
-    mention_room_num: integer,
-    mytask_room_num: integer,
-    unread_num: integer,
-    mention_num: integer,
-    mytask_num: integer,
+    unread_room_num: non_neg_integer,
+    mention_room_num: non_neg_integer,
+    mytask_room_num: non_neg_integer,
+    unread_num: non_neg_integer,
+    mention_num: non_neg_integer,
+    mytask_num: non_neg_integer,
   }
 end

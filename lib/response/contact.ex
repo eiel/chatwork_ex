@@ -11,11 +11,11 @@ defmodule ChatworkEx.Response.Contact do
   ]
 
   @type t :: %__MODULE__{
-    account_id: integer,
-    room_id: integer,
+    account_id: pos_integer,
+    room_id: pos_integer,
     name: bitstring,
     chatwork_id: bitstring,
-    organization_id: integer,
+    organization_id: pos_integer,
     organization_name: bitstring,
     department: bitstring,
     avatar_image_url: bitstring,

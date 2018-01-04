@@ -27,7 +27,7 @@ defmodule ChatworkEx.Endpoint.My.TasksTest do
     %RoomSummary{ room_id: _ } = room
   end
 
-  test "get! status: done" do
+  test "get! status: :done" do
     access_token = System.get_env("CHATWORK_TOKEN")
     %Response{
       rate_limit: %RateLimit{
@@ -36,7 +36,7 @@ defmodule ChatworkEx.Endpoint.My.TasksTest do
         reset: _,
       },
       body: body
-    } = get!(access_token, status: "done")
+    } = get!(access_token, status: :done)
     %Task{
       task_id: _,
     } = hd(body)

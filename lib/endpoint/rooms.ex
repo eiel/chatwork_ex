@@ -1,6 +1,6 @@
 defmodule ChatworkEx.Endpoint.Rooms do
   @moduledoc """
-  Me Endopoint API Intefaces.
+  Rooms Endopoint API Intefaces.
   """
 
   alias ChatworkEx.Endpoint.Base
@@ -49,14 +49,14 @@ defmodule ChatworkEx.Endpoint.Rooms do
       ]
     ]
     Base.post!(url, access_token, options)
-    |> to_post_response!
+    |> to_room_id_response!
   end
 
   defp to_response!(response) do
     Base.to_response!(response, [%Room{}])
   end
 
-  defp to_post_response!(response) do
+  defp to_room_id_response!(response) do
     Base.to_response!(response, %RoomId{})
   end
 

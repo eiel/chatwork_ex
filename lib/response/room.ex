@@ -16,18 +16,18 @@ defmodule ChatworkEx.Response.Room do
   ]
 
   @type t :: %__MODULE__{
-    room_id: integer,
+    room_id: pos_integer,
     name: bitstring,
     type: bitstring, # "group" | "my" | "direct"
     role: bitstring, # "admin" | "member" | "readonly"
     sticky: boolean,
-    unread_num: integer,
-    mention_num: integer,
-    mytask_num: integer,
-    message_num: integer,
-    file_num: integer,
-    task_num: integer,
+    unread_num: non_neg_integer,
+    mention_num: non_neg_integer,
+    mytask_num: non_neg_integer,
+    message_num: non_neg_integer,
+    file_num: non_neg_integer,
+    task_num: non_neg_integer,
     icon_path: bitstring,
-    last_update_time: integer, # Unixtime
+    last_update_time: pos_integer, # Unixtime
   }
 end

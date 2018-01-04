@@ -17,10 +17,11 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
   ## options
 
   * `status`
-    Must be either `"opet"` or `"done"`
+    Must be either `:open` or `:done`
   * `assigned_by_account`
   """
-  @spec get!(bitstring, Keyword.t) :: Response.t([Task])
+  @type task_status :: :open | :done
+  @spec get!(bitstring, [status: task_status, assigned_by_account: pos_integer]) :: Response.t([Task.t])
   def get!(access_token, options \\ []) do
     # TODO status is open or done
     Base.get!(url, access_token, options)
@@ -29,7 +30,7 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
 
   def get(access_token, options \\ []) do
     try do
-      response = get!(access_token, options)
+      response = get!(access_token)
       {:ok, response}
     rescue
       e in UnauthorizedError ->

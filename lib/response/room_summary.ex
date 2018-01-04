@@ -8,6 +8,6 @@ defmodule ChatworkEx.Response.RoomSummary do
   @type t :: %__MODULE__{
     icon_path: bitstring,
     name: bitstring,
-    room_id: integer,
+    room_id: pos_integer,
   }
 end
