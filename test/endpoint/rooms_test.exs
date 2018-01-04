@@ -29,19 +29,4 @@ defmodule ChatworkEx.Endpoint.RoomsTest do
       room_id: _,
     } = hd(rooms)
   end
-
-  test "post!" do
-    access_token = System.get_env("CHATWORK_TOKEN")
-    %{ body: me } = Me.get!(access_token)
-    %Response{
-      rate_limit: %RateLimit{
-        limit: _,
-        remaining: _,
-        reset: _,
-      },
-      body: %RoomId{
-        room_id: _,
-      }
-    } = post!(access_token, "test room", me.account_id)
-  end
 end

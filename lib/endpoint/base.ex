@@ -23,6 +23,11 @@ defmodule ChatworkEx.Endpoint.Base do
     HTTPoison.post!(url, {:form, body}, headers)
   end
 
+  def delete!(url, access_token, options \\ []) do
+    headers = HeaderCreator.headers(access_token)
+    HTTPoison.delete!(url, headers, options)
+  end
+
   def parse_header({"X-RateLimit-Limit", limit}, rate_limit), do: %{rate_limit | limit: limit}
   def parse_header({"X-RateLimit-Remaining", remaining}, rate_limit), do: %{rate_limit | remaining: remaining}
   def parse_header({"X-RateLimit-Reset", reset}, rate_limit), do: %{ rate_limit | reset: reset }
@@ -38,8 +43,16 @@ defmodule ChatworkEx.Endpoint.Base do
   end
 
   def to_response!(
+    %HTTPoison.Response{ status_code: 204, headers: headers },
+    _struct
+  ) do
+    rate_limit = List.foldl(headers, %RateLimit{}, &parse_header/2)
+    %Response{ rate_limit: rate_limit, body: nil }
+  end
+
+  def to_response!(
     %HTTPoison.Response{ status_code: 401, body: body },
-    struct
+    _struct
   ) do
     error = Poison.decode! body, as: %Error{}
     raise UnauthorizedError, message: error
