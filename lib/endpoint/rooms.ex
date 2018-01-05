@@ -39,7 +39,13 @@ defmodule ChatworkEx.Endpoint.Rooms do
   * `members_member_ids`
   * `members_readonly_ids`
   """
-  @spec post!(bitstring, bitstring, integer, Keyword.t) :: Respons.t(RoomId.t)
+  @type post_options :: [
+    description: bitstring,
+    icon_preset: :group | :check | :document | :meeting | :event | :project | :business | :study | :security | :star | :idea | :heart | :magcup | :beer | :music | :sports | :travel,
+    members_member_ids: pos_integer | [pos_integer],
+    members_readonly_ids: pos_integer | [pos_integer],
+  ]
+  @spec post!(bitstring, bitstring, pos_integer | [pos_integer], post_options) :: Respons.t(RoomId.t)
   def post!(access_token, name, members_admin_ids, options \\ []) do
     options = [
       { :name, name } |

@@ -1,5 +1,6 @@
 defmodule ChatworkEx.Endpoint.Base do
   alias ChatworkEx.HeaderCreator
+  alias ChatworkEx.ParameterNormalizer
   alias ChatworkEx.Response
   alias ChatworkEx.Response.RateLimit
   alias ChatworkEx.Response.Error
@@ -19,6 +20,7 @@ defmodule ChatworkEx.Endpoint.Base do
   end
 
   def post!(url, access_token, body \\ []) do
+    body = ParameterNormalizer.normalize(body)
     headers = HeaderCreator.headers(access_token)
     HTTPoison.post!(url, {:form, body}, headers)
   end
@@ -57,4 +59,5 @@ defmodule ChatworkEx.Endpoint.Base do
     error = Poison.decode! body, as: %Error{}
     raise UnauthorizedError, message: error
   end
+
 end
