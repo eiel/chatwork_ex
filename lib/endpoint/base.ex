@@ -25,6 +25,11 @@ defmodule ChatworkEx.Endpoint.Base do
     HTTPoison.post!(url, {:form, body}, headers)
   end
 
+  def put!(url, access_token, body \\ []) do
+    headers = HeaderCreator.headers(access_token)
+    HTTPoison.put!(url, {:form, body}, headers)
+  end
+
   def delete!(url, access_token, options \\ []) do
     headers = HeaderCreator.headers(access_token)
     HTTPoison.delete!(url, headers, options)

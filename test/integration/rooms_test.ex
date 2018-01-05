@@ -35,13 +35,21 @@ defmodule ChatworkEx.Integration.RoomsTest do
     after_rooms_length = length(rooms)
     assert before_rooms_length+1 === after_rooms_length
 
+    # rename room name
+    new_name = "new test room"
+    %{
+      body: %{
+        room_id: _
+      }
+    } = Room.put!(access_token, room_id, name: new_name)
+
     # get room name
     %{
       body: %Response.Room{
-        name: current_name 
+        name: current_name
       }
     } = Room.get!(access_token, room_id)
-    assert name === current_name
+    assert new_name === current_name
 
     # delete room
     Room.delete!(access_token, room_id, :delete)

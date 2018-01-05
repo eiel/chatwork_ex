@@ -41,7 +41,7 @@ defmodule ChatworkEx.Endpoint.Rooms do
   """
   @type post_options :: [
     description: bitstring,
-    icon_preset: :group | :check | :document | :meeting | :event | :project | :business | :study | :security | :star | :idea | :heart | :magcup | :beer | :music | :sports | :travel,
+    icon_preset: Room.icon_preset,
     members_member_ids: pos_integer | [pos_integer],
     members_readonly_ids: pos_integer | [pos_integer],
   ]

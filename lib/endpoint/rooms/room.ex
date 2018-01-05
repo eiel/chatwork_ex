@@ -18,6 +18,17 @@ defmodule ChatworkEx.Endpoint.Rooms.Room do
     |> Base.to_response!(%Room{})
   end
 
+  @type put_params :: [
+    description: bitstring,
+    icon_preset: Room.icon_preset,
+    name: bitstring,
+  ]
+  @spec put!(bitstring, pos_integer, put_params) :: Response.t(Room.t)
+  def put!(access_token, room_id, params) do
+    Base.put!(url(room_id), access_token, params)
+    |> Base.to_response!(%Room{})
+  end
+
   @spec delete!(bitstring, pos_integer, :leave | :delete) :: Response.t(nil)
   def delete!(access_token, room_id, action_type) do
     Base.delete!(url(room_id), access_token, params: [action_type: action_type])

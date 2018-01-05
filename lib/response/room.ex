@@ -15,6 +15,8 @@ defmodule ChatworkEx.Response.Room do
     :last_update_time,
   ]
 
+  @type icon_preset :: :group | :check | :document | :meeting | :event | :project | :business | :study | :security | :star | :idea | :heart | :magcup | :beer | :music | :sports | :travel
+
   @type t :: %__MODULE__{
     room_id: pos_integer,
     name: bitstring,
