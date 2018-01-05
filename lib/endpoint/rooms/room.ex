@@ -12,6 +12,12 @@ defmodule ChatworkEx.Endpoint.Rooms.Room do
   def path, do: @path
   def url(room_id), do: @url <> to_string(room_id)
 
+  @spec get!(bitstring, pos_integer):: Response.t(Room.t)
+  def get!(access_token, room_id) do
+    Base.get!(url(room_id), access_token)
+    |> Base.to_response!(%Room{})
+  end
+
   @spec delete!(bitstring, pos_integer, :leave | :delete) :: Response.t(nil)
   def delete!(access_token, room_id, action_type) do
     Base.delete!(url(room_id), access_token, params: [action_type: action_type])
