@@ -30,7 +30,7 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
 
   def get(access_token, options \\ []) do
     try do
-      response = get!(access_token)
+      response = get!(access_token, options)
       {:ok, response}
     rescue
       e in UnauthorizedError ->
