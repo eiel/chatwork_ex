@@ -4,8 +4,9 @@ defmodule ChatworkEx.Endpoint.Me do
   """
 
   alias ChatworkEx.Endpoint.Base
+  alias ChatworkEx.Response
   alias ChatworkEx.Response.{ Me, RateLimit, Error }
-  alias ChatworkEx.{ Response, UnauthorizedError }
+  alias ChatworkEx.Errors.UnauthorizedError
 
   @path "me"
   @url Base.base <> @path

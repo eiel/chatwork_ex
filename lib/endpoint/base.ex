@@ -1,10 +1,12 @@
 defmodule ChatworkEx.Endpoint.Base do
+
   alias ChatworkEx.HeaderCreator
   alias ChatworkEx.ParameterNormalizer
   alias ChatworkEx.Response
   alias ChatworkEx.Response.RateLimit
   alias ChatworkEx.Response.Error
-  alias ChatworkEx.UnauthorizedError
+  alias ChatworkEx.Errors.BadClientError
+  alias ChatworkEx.Errors.UnauthorizedError
 
   @base "https://api.chatwork.com/v2/"
 
@@ -63,6 +65,14 @@ defmodule ChatworkEx.Endpoint.Base do
   ) do
     error = Poison.decode! body, as: %Error{}
     raise UnauthorizedError, message: error
+  end
+
+  def to_response!(
+    %HTTPoison.Response{ status_code: 403, body: body },
+    _struct
+  ) do
+    error = Poison.decode! body, as: %Error{}
+    raise BadClientError, message: error
   end
 
 end

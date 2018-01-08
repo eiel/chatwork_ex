@@ -6,7 +6,7 @@ defmodule ChatworkEx.Endpoint.MeTest do
   alias ChatworkEx.Response
   alias ChatworkEx.Response.Me
   alias ChatworkEx.Response.RateLimit
-  alias ChatworkEx.UnauthorizedError
+  alias ChatworkEx.Errors.UnauthorizedError
 
   doctest ChatworkEx.Endpoint.Me
 
