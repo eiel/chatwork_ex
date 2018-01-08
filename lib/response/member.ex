@@ -11,7 +11,7 @@ defmodule ChatworkEx.Response.Member do
   ]
 
   @type role :: :admin | :member | :readonly
-  @type t :: [
+  @type t :: %__MODULE__{
     account_id: pos_integer,
     role: role,
     name: bitstring,
@@ -20,5 +20,5 @@ defmodule ChatworkEx.Response.Member do
     organization_name: bitstring,
     department: bitstring,
     avatar_image_url: bitstring,
-  ]
+  }
 end
