@@ -15,7 +15,7 @@ defmodule ChatworkEx.Endpoint.Contacts do
 
   @spec get!(bitstring) :: Response.t([Contact.t()])
   def get!(access_token) do
-    Base.get!(url, access_token)
+    Base.get!(url(), access_token)
     |> to_response!
   end
 

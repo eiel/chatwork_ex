@@ -4,7 +4,7 @@ defmodule ChatworkEx.Endpoint.Rooms do
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{Room, RoomId, RateLimit, Error}
+  alias ChatworkEx.Response.{Room, RoomId}
   alias ChatworkEx.{Response, UnauthorizedError}
 
   @path "rooms"
@@ -15,7 +15,7 @@ defmodule ChatworkEx.Endpoint.Rooms do
 
   @spec get!(bitstring) :: Response.t([Room.t()])
   def get!(access_token) do
-    Base.get!(url, access_token)
+    Base.get!(url(), access_token)
     |> to_response!
   end
 
@@ -56,7 +56,7 @@ defmodule ChatworkEx.Endpoint.Rooms do
         ]
     ]
 
-    Base.post!(url, access_token, options)
+    Base.post!(url(), access_token, options)
     |> to_room_id_response!
   end
 
