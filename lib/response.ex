@@ -1,12 +1,11 @@
 defmodule ChatworkEx.Response do
-
   defstruct [
     :rate_limit,
-    :body,
+    :body
   ]
 
   @type t(body) :: %__MODULE__{
-    rate_limit: RateLimit.t,
-    body: body
-  }
+          rate_limit: RateLimit.t(),
+          body: body
+        }
 end

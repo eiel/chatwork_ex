@@ -17,16 +17,18 @@ defmodule ChatworkEx.Endpoint.RoomsTest do
 
   test "get!" do
     access_token = System.get_env("CHATWORK_TOKEN")
+
     %Response{
       rate_limit: %RateLimit{
         limit: _,
         remaining: _,
-        reset: _,
+        reset: _
       },
       body: rooms
     } = get!(access_token)
-    %Room {
-      room_id: _,
+
+    %Room{
+      room_id: _
     } = hd(rooms)
   end
 end

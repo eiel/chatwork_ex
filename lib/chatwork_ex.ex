@@ -4,6 +4,6 @@ defmodule ChatworkEx do
   """
 
   def version do
-    Mix.Project.config[:version]
+    Mix.Project.config()[:version]
   end
 end

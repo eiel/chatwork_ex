@@ -12,7 +12,7 @@ defmodule ChatworkEx.Mixfile do
         licenses: ["MIT"],
         links: %{"GitHub" => "https://github.com/eiel/chatwork_ex"}
       ],
-      start_permanent: Mix.env == :prod,
+      start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
   end

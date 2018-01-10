@@ -1,20 +1,19 @@
-
 defmodule ChatworkEx.Endpoint.Contacts do
   @moduledoc """
   Me Endopoint API Intefaces.
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{ Contact, RateLimit, Error }
-  alias ChatworkEx.{ Response, UnauthorizedError }
+  alias ChatworkEx.Response.{Contact, RateLimit, Error}
+  alias ChatworkEx.{Response, UnauthorizedError}
 
   @path "contacts"
-  @url Base.base <> @path
+  @url Base.base() <> @path
 
   def path, do: @path
   def url, do: @url
 
-  @spec get!(bitstring) :: Response.t([Contact.t])
+  @spec get!(bitstring) :: Response.t([Contact.t()])
   def get!(access_token) do
     Base.get!(url, access_token)
     |> to_response!
@@ -33,5 +32,4 @@ defmodule ChatworkEx.Endpoint.Contacts do
   defp to_response!(response) do
     Base.to_response!(response, [%Contact{}])
   end
-
 end

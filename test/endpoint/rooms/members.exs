@@ -1,5 +1,5 @@
 defmodule ChatworkEx.Endpoint.Room.Members do
-  @other_account_id 2834365
+  @other_account_id 2_834_365
 
   use ExUnit.Case
 
@@ -12,11 +12,12 @@ defmodule ChatworkEx.Endpoint.Room.Members do
 
   setup do
     access_token = System.get_env("CHATWORK_TOKEN")
+
     %{
-       body: %{
-         account_id: account_id,
-       },
-     } = Me.get!(access_token)
+      body: %{
+        account_id: account_id
+      }
+    } = Me.get!(access_token)
 
     {:ok, access_token: access_token, account_id: account_id}
   end
@@ -24,19 +25,19 @@ defmodule ChatworkEx.Endpoint.Room.Members do
   test "get", context do
     %{
       access_token: access_token,
-      account_id: account_id,
+      account_id: account_id
     } = context
 
     %{
       body: %{
-        room_id: room_id,
-      },
-    } = Rooms.post!(access_token, "member test", account_id )
+        room_id: room_id
+      }
+    } = Rooms.post!(access_token, "member test", account_id)
 
     %{
       body: [
         %Member{
-          account_id: _,
+          account_id: _
         }
       ]
     } = get!(access_token, room_id)
@@ -47,27 +48,27 @@ defmodule ChatworkEx.Endpoint.Room.Members do
   test "put", context do
     %{
       access_token: access_token,
-      account_id: account_id,
+      account_id: account_id
     } = context
 
     %{
       body: %{
-        room_id: room_id,
-      },
-     } = Rooms.post!(access_token, "member test put", account_id )
+        room_id: room_id
+      }
+    } = Rooms.post!(access_token, "member test put", account_id)
 
     %{
-      body: %RoomMemberInfo {
+      body: %RoomMemberInfo{
         readonly: [@other_account_id]
       }
-    } = put!(
-      access_token,
-      room_id,
-      account_id,
-      members_readonly_ids: @other_account_id,
-    )
+    } =
+      put!(
+        access_token,
+        room_id,
+        account_id,
+        members_readonly_ids: @other_account_id
+      )
 
     Room.delete!(access_token, room_id, :delete)
   end
-
 end

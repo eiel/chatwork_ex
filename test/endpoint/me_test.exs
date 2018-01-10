@@ -16,15 +16,16 @@ defmodule ChatworkEx.Endpoint.MeTest do
 
   test "get!" do
     access_token = System.get_env("CHATWORK_TOKEN")
+
     %Response{
       rate_limit: %RateLimit{
         limit: _,
         remaining: _,
-        reset: _,
+        reset: _
       },
       body: %Me{
         account_id: _
-      },
+      }
     } = get!(access_token)
   end
 

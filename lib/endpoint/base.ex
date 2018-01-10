@@ -3,7 +3,7 @@ defmodule ChatworkEx.Endpoint.Base do
   alias ChatworkEx.HeaderCreator
   alias ChatworkEx.ParameterNormalizer
   alias ChatworkEx.Response
-  alias ChatworkEx.Response.RateLimit
+   alias ChatworkEx.Response.RateLimit
   alias ChatworkEx.Response.Error
   alias ChatworkEx.Errors.BadClientError
   alias ChatworkEx.Errors.UnauthorizedError

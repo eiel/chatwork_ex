@@ -4,11 +4,11 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{ Task, RateLimit, Error }
-  alias ChatworkEx.{ Response, HeaderCreator, UnauthorizedError }
+  alias ChatworkEx.Response.{Task, RateLimit, Error}
+  alias ChatworkEx.{Response, HeaderCreator, UnauthorizedError}
 
   @path "my/tasks"
-  @url Base.base <> @path
+  @url Base.base() <> @path
 
   def path, do: @path
   def url, do: @url
@@ -21,7 +21,8 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
   * `assigned_by_account`
   """
   @type task_status :: :open | :done
-  @spec get!(bitstring, [status: task_status, assigned_by_account: pos_integer]) :: Response.t([Task.t])
+  @spec get!(bitstring, status: task_status, assigned_by_account: pos_integer) ::
+          Response.t([Task.t()])
   def get!(access_token, options \\ []) do
     # TODO status is open or done
     Base.get!(url, access_token, options)
@@ -41,5 +42,4 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
   defp to_response!(response) do
     Base.to_response!(response, [%Task{}])
   end
-
 end

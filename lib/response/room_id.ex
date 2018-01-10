@@ -4,6 +4,6 @@ defmodule ChatworkEx.Response.RoomId do
   ]
 
   @type t :: %__MODULE__{
-    room_id: pos_integer
-  }
+          room_id: pos_integer
+        }
 end

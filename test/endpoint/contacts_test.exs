@@ -15,11 +15,12 @@ defmodule ChatworkEx.Endpoint.ContactsTest do
 
   test "get!" do
     access_token = System.get_env("CHATWORK_TOKEN")
+
     %Response{
       rate_limit: %RateLimit{
         limit: _,
         remaining: _,
-        reset: _,
+        reset: _
       },
       body: contacts
     } = get!(access_token)

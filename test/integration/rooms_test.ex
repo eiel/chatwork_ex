@@ -13,7 +13,7 @@ defmodule ChatworkEx.Integration.RoomsTest do
     name = "test room"
 
     # get number of room list
-    %{ body: rooms } = Rooms.get!(access_token)
+    %{body: rooms} = Rooms.get!(access_token)
     before_rooms_length = length(rooms)
 
     # get account_id
@@ -26,17 +26,18 @@ defmodule ChatworkEx.Integration.RoomsTest do
     # create room
     %{
       body: %RoomId{
-        room_id: room_id,
+        room_id: room_id
       }
     } = Rooms.post!(access_token, name, account_id)
 
     # get number of room_list
-    %{ body: rooms } = Rooms.get!(access_token)
+    %{body: rooms} = Rooms.get!(access_token)
     after_rooms_length = length(rooms)
-    assert before_rooms_length+1 === after_rooms_length
+    assert before_rooms_length + 1 === after_rooms_length
 
     # rename room name
     new_name = "new test room"
+
     %{
       body: %{
         room_id: _
@@ -49,13 +50,14 @@ defmodule ChatworkEx.Integration.RoomsTest do
         name: current_name
       }
     } = Room.get!(access_token, room_id)
+
     assert new_name === current_name
 
     # delete room
     Room.delete!(access_token, room_id, :delete)
 
     # get number of room list
-    %{ body: rooms } = Rooms.get!(access_token)
+    %{body: rooms} = Rooms.get!(access_token)
     assert before_rooms_length == length(rooms)
   end
 end
