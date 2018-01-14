@@ -4,7 +4,7 @@ defmodule ChatworkEx.Endpoint.Contacts do
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{Contact, RateLimit, Error}
+  alias ChatworkEx.Response.Contact
   alias ChatworkEx.{Response, UnauthorizedError}
 
   @path "contacts"

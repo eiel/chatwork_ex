@@ -3,10 +3,8 @@ defmodule ChatworkEx.Endpoint.RoomsTest do
 
   import ChatworkEx.Endpoint.Rooms
 
-  alias ChatworkEx.Endpoint.Me
   alias ChatworkEx.Response
   alias ChatworkEx.Response.Room
-  alias ChatworkEx.Response.RoomId
   alias ChatworkEx.Response.RateLimit
 
   doctest ChatworkEx.Endpoint.Rooms

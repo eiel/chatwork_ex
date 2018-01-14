@@ -4,8 +4,8 @@ defmodule ChatworkEx.Endpoint.My.Tasks do
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{MyTask, RateLimit, Error}
-  alias ChatworkEx.{Response, HeaderCreator, UnauthorizedError}
+  alias ChatworkEx.Response.MyTask
+  alias ChatworkEx.UnauthorizedError
 
   @path "my/tasks"
   @url Base.base() <> @path

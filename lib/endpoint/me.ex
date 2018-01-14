@@ -5,7 +5,7 @@ defmodule ChatworkEx.Endpoint.Me do
 
   alias ChatworkEx.Endpoint.Base
   alias ChatworkEx.Response
-  alias ChatworkEx.Response.{Me, RateLimit, Error}
+  alias ChatworkEx.Response.Me
   alias ChatworkEx.Errors.UnauthorizedError
 
   @path "me"
@@ -16,7 +16,7 @@ defmodule ChatworkEx.Endpoint.Me do
 
   @spec get!(bitstring) :: Response.t(Me.t())
   def get!(access_token) do
-    Base.get!(url, access_token)
+    Base.get!(url(), access_token)
     |> to_response!
   end
 

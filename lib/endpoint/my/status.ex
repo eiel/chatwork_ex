@@ -4,8 +4,8 @@ defmodule ChatworkEx.Endpoint.My.Status do
   """
 
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{MyStatus, RateLimit, Error}
-  alias ChatworkEx.{Response, HeaderCreator, UnauthorizedError}
+  alias ChatworkEx.Response.{MyStatus}
+  alias ChatworkEx.{Response, UnauthorizedError}
 
   @path "my/status"
   @url Base.base() <> @path
@@ -15,7 +15,7 @@ defmodule ChatworkEx.Endpoint.My.Status do
 
   @spec get!(bitstring) :: Response.t(MyStatus.t())
   def get!(access_token) do
-    Base.get!(url, access_token)
+    Base.get!(url(), access_token)
     |> to_response!
   end
 

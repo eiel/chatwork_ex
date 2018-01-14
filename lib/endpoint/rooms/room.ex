@@ -3,8 +3,8 @@ defmodule ChatworkEx.Endpoint.Rooms.Room do
   Room Endopoint API Intefaces.
   """
   alias ChatworkEx.Endpoint.Base
-  alias ChatworkEx.Response.{Room, RoomId, RateLimit, Error}
-  alias ChatworkEx.{Response, UnauthorizedError}
+  alias ChatworkEx.Response.Room
+  alias ChatworkEx.Response
 
   @path "rooms/"
   @url Base.base() <> @path
