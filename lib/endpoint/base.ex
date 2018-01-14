@@ -6,6 +6,7 @@ defmodule ChatworkEx.Endpoint.Base do
   alias ChatworkEx.Response.Error
   alias ChatworkEx.Errors.BadClientError
   alias ChatworkEx.Errors.UnauthorizedError
+  alias ChatworkEx.Errors.NotFoundError
 
   @base "https://api.chatwork.com/v2/"
 
@@ -62,6 +63,14 @@ defmodule ChatworkEx.Endpoint.Base do
       ) do
     rate_limit = List.foldl(headers, %RateLimit{}, &parse_header/2)
     %Response{rate_limit: rate_limit, body: nil}
+  end
+
+  def to_response!(
+        %HTTPoison.Response{status_code: 404, body: body},
+        _struct
+      ) do
+    error = Poison.decode!(body, as: %Error{})
+    raise NotFoundError, message: error
   end
 
   def to_response!(

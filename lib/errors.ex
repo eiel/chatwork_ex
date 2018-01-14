@@ -6,4 +6,8 @@ defmodule ChatworkEx.Errors do
   defmodule BadClientError do
     defexception message: ""
   end
+
+  defmodule NotFoundError do
+    defexception message: ""
+  end
 end
