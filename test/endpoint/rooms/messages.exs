@@ -25,6 +25,8 @@ defmodule ChatworkEx.Endpoint.Rooms.MessagesTest do
       body: messages
     } = get!(access_token, room_id, force: true)
 
+    get!(access_token, room_id)
+
     %Message{
       body: _
     } = hd(messages)
