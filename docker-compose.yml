@@ -1,7 +1,7 @@
 version: '3'
 services:
   build:
-    image: elixir
+    image: cwhimura/elixir:v1.6.0-rc.1
     volumes:
       - .:/work
       - .mix:/root/.mix
