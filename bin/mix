@@ -1,0 +1,3 @@
+#!/bin/sh
+cd $(dirname $0)/..
+docker-compose run build sh -c "cd $PWD; ERL_LIBS=/erl_libs:\$ERL_LIBS mix $*"

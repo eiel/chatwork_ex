@@ -1,0 +1,9 @@
+version: '3'
+services:
+  build:
+    image: elixir
+    volumes:
+      - .:/work
+      - .mix:/root/.mix
+      - ~/.atom/packages/ide-elixir/elixir-ls-release:/erl_libs
+      - .:${PWD} # for language-server
